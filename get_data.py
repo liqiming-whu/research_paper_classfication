@@ -2,18 +2,29 @@ from Bio import Entrez
 from Bio import Medline
 import csv
 
-
+# 获取数据并创建数据集
 Entrez.email = "liqiming1914658215@gmail.com"
 Entrez.api_key = "c80ce212c7179f0bbfbd88495a91dd356708"
 db = "pubmed"
-path = "d:/research_paper_classfication/biology/"
+
+# path = "d:/research_paper_classfication/biology/"
 # path = "d:/research_paper_classfication/chemistry/"
-keywds = "Cell[ta]"
-# keywds = "Nat Chem[ta]"
-sub = 1  # "biology"
+# path = "d:/research_paper_classfication/physics/"
+path = "d:/research_paper_classfication/computer_science/"
+# path = "d:/research_paper_classfication/other/"
+
+# keywds = "Cell[ta]"
+# keywds = "Nat Chem[ta] OR J Am Chem Soc[ta]"
+# keywds = "J Phys Condens Matter[ta] OR Nat phys[ta] OR Annu Rev Fluid Mech[ta]"
+keywds = "IEEE Trans Neural Netw Learn Syst[ta]"
+# keywds = "Nat Geosci[ta] OR Front Psychol[ta]"
+# other已经弃用，改用make_other_data.py使用维基百科数据集
+
+# sub = 1  # "biology"
 # sub = 2  # "chemistry"
-data_size = 1800
-# data_size = 1200
+# sub = 3  # "physics"
+sub = 4  # "computer_science"
+# sub = 5  # "other"
 
 
 def search(database, keywords):
@@ -46,8 +57,8 @@ def make_train_data(title_list, abstract_list, tag):
               newline="", encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         print("make train data...")
-        for title, abstract in zip(title_list[:data_size],
-                                   abstract_list[:data_size]):
+        for title, abstract in zip(title_list[:1800],
+                                   abstract_list[:1800]):
             writer.writerow([title, abstract, tag])
 
 
@@ -56,8 +67,8 @@ def make_test_data(title_list, abstract_list, tag):
               newline="", encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         print("make test data...")
-        for title, abstract in zip(title_list[data_size:],
-                                   abstract_list[data_size:]):
+        for title, abstract in zip(title_list[1800:2100],
+                                   abstract_list[1800:2100]):
             writer.writerow([title, abstract, tag])
 
 

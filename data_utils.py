@@ -35,7 +35,7 @@ def build_word_dict():  # 建立词表
         word_dict["<unk>"] = 1   # 用于去除不在字典中的词，用1表示
         word_dict["<eos>"] = 2   # 结束符
         for word, _ in word_counter:
-            word_dict[word] = len(word_dict)  # one-hot
+            word_dict[word] = len(word_dict)  # one-hot编码
 
         with open("word_dict.pikle", "wb") as f:
             pickle.dump(word_dict, f)
