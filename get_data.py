@@ -5,13 +5,15 @@ import csv
 
 Entrez.email = "liqiming1914658215@gmail.com"
 Entrez.api_key = "c80ce212c7179f0bbfbd88495a91dd356708"
-# path = "d:/research_paper_classfication/biology/"
-path = "d:/research_paper_classfication/chemistry/"
 db = "pubmed"
-# keywds = "Cell[ta]"
-keywds = "Nat Chem[ta]"
-# sub = "biology"
-sub = "chemistry"
+path = "d:/research_paper_classfication/biology/"
+# path = "d:/research_paper_classfication/chemistry/"
+keywds = "Cell[ta]"
+# keywds = "Nat Chem[ta]"
+sub = 1  # "biology"
+# sub = 2  # "chemistry"
+data_size = 1800
+# data_size = 1200
 
 
 def search(database, keywords):
@@ -44,7 +46,8 @@ def make_train_data(title_list, abstract_list, tag):
               newline="", encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         print("make train data...")
-        for title, abstract in zip(title_list[:1200], abstract_list[:1200]):
+        for title, abstract in zip(title_list[:data_size],
+                                   abstract_list[:data_size]):
             writer.writerow([title, abstract, tag])
 
 
@@ -53,7 +56,8 @@ def make_test_data(title_list, abstract_list, tag):
               newline="", encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         print("make test data...")
-        for title, abstract in zip(title_list[1200:], abstract_list[1200:]):
+        for title, abstract in zip(title_list[data_size:],
+                                   abstract_list[data_size:]):
             writer.writerow([title, abstract, tag])
 
 
