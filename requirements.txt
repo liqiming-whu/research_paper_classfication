@@ -1,0 +1,6 @@
+pandas
+biopython
+wget
+scikit-learn
+numpy
+nltk

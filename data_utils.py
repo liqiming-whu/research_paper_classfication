@@ -64,7 +64,18 @@ def build_svm_dataset(step, word_dict):  # 创建数据集
     return x, y
 
 
-def addwhitespace(text):  # CountVectorizer().fit_transform()要求输入的每个字符以空格隔开，加上空格
+def build_predict_dict():  # 创建类别对应字典
+    d = dict()
+    d[0] = "Biology"
+    d[1] = "Chemistry"
+    d[2] = "Physics"
+    d[3] = "Computer Science"
+    d[4] = "Others"
+
+    return d
+
+
+def addwhitespace(text):  # CountVectorizer().fit_transform()要求输入句子为空格连接的字符串
     c = list()
     for i in text:
         a = map(str, i)

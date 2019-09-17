@@ -1,4 +1,4 @@
-from sklearn.externals import joblib
+import joblib
 from svm import Svm
 from data_utils import*
 
@@ -23,8 +23,11 @@ def main():
     clf = load_model()
     if(clf):
         text = addwhitespace(test_x)
-        predicted = predict(text[:100], clf)
-        print("class", predicted)
+        predicted = predict(text[:100], clf)  # 取测试集的100个数据输出预测结果
+        predict_dict = build_predict_dict()
+        print(predicted)
+        predict_class = list(predict_dict[i] for i in predicted)
+        print("class:", predict_class)
 
 
 if __name__ == "__main__":
