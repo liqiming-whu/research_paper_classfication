@@ -3,7 +3,9 @@
 依据摘要对文献进行分类(支持向量机）
 
 tfidf: (9000, 47061)
+
 Accuracy: 0.968
+<<<<<<< HEAD
 
 ## usage：
 
@@ -52,3 +54,5 @@ python svm.py  # 训练model，词汇表保存在word_dict.pikle，训练完毕�
 python test_predict.py  #预测并输出测试集中100个样本的类别。
 ```
 
+=======
+>>>>>>> c99e7cccde247b84f401a49c82747b8ce0c19659
